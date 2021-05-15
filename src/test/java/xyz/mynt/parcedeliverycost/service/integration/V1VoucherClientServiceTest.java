@@ -55,7 +55,7 @@ public class V1VoucherClientServiceTest {
 
         when(voucherClient.getVoucher(any(), anyString())).thenReturn(voucherResponse);
         try {
-            Double discount = v1VoucherClientService.getDiscount(voucherCode);
+            v1VoucherClientService.getDiscount(voucherCode);
         } catch (BadRequestException e) {
             Assert.assertEquals(ErrorMessages.VOUCHER_CODE_ALREADY_EXPIRED, e.getMessage());
         }

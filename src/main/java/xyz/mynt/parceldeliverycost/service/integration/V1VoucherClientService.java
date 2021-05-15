@@ -3,6 +3,7 @@ package xyz.mynt.parceldeliverycost.service.integration;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import xyz.mynt.parceldeliverycost.constant.ErrorMessages;
 import xyz.mynt.parceldeliverycost.exception.BadRequestException;
 import xyz.mynt.parceldeliverycost.integration.voucher.VoucherClient;
 import xyz.mynt.parceldeliverycost.integration.voucher.dto.VoucherResponse;
@@ -22,7 +23,7 @@ public class V1VoucherClientService implements VoucherClientService {
     public Double getDiscount(String voucherCode) {
         VoucherResponse voucher = voucherClient.getVoucher(voucherCode, apikey);
         if (LocalDate.now().isAfter(voucher.getExpiry())) {
-            throw new BadRequestException("Voucher code already expired.");
+            throw new BadRequestException(ErrorMessages.VOUCHER_CODE_ALREADY_EXPIRED);
         }
         return voucher.getDiscount();
     }
