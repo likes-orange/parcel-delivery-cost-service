@@ -1,6 +1,5 @@
 package xyz.mynt.parcedeliverycost.service;
 
-import com.sun.javafx.binding.StringFormatter;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -14,14 +13,14 @@ import xyz.mynt.parceldeliverycost.entity.DeliveryCostRule;
 import xyz.mynt.parceldeliverycost.exception.BadRequestException;
 import xyz.mynt.parceldeliverycost.exception.NotFoundException;
 import xyz.mynt.parceldeliverycost.repository.DeliveryCostRuleRepository;
-import xyz.mynt.parceldeliverycost.service.ParcelDeliveryCostService;
 import xyz.mynt.parceldeliverycost.service.V1ParcelDeliveryCostService;
 import xyz.mynt.parceldeliverycost.service.integration.VoucherClientService;
 
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 

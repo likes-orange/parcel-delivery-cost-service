@@ -27,11 +27,11 @@ public class RestExceptionHandler {
     private final Tracer tracer;
 
     @ExceptionHandler(Exception.class)
-    private ResponseEntity<BaseResponse> handleException(Exception e) {
+    private ResponseEntity<BaseResponse<Void>> handleException(Exception e) {
         log.error(e.getMessage(), e);
 
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(BaseResponse.builder()
+                .body(BaseResponse.<Void>builder()
                         .error(ErrorResponse.builder()
                                 .responseCode(ResponseCode.PDC50000)
                                 .messages(Collections.singletonList(ErrorMessages.GENERAL))
@@ -42,11 +42,11 @@ public class RestExceptionHandler {
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    private ResponseEntity<BaseResponse> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
+    private ResponseEntity<BaseResponse<Void>> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         log.warn(e.getMessage());
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body(BaseResponse.builder()
+                .body(BaseResponse.<Void>builder()
                         .error(ErrorResponse.builder()
                                 .responseCode(ResponseCode.PDC40001)
                                 .messages(e.getBindingResult().getFieldErrors()
@@ -60,11 +60,11 @@ public class RestExceptionHandler {
     }
 
     @ExceptionHandler(BadRequestException.class)
-    private ResponseEntity<BaseResponse> handleBadRequestException(BadRequestException e) {
+    private ResponseEntity<BaseResponse<Void>> handleBadRequestException(BadRequestException e) {
         log.warn(e.getMessage());
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body(BaseResponse.builder()
+                .body(BaseResponse.<Void>builder()
                         .error(ErrorResponse.builder()
                                 .responseCode(ResponseCode.PDC40001)
                                 .messages(Collections.singletonList(e.getMessage()))

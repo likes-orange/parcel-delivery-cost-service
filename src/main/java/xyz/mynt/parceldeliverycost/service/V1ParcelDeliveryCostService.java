@@ -6,7 +6,6 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import xyz.mynt.parceldeliverycost.constant.ErrorMessages;
-import xyz.mynt.parceldeliverycost.constant.RuleType;
 import xyz.mynt.parceldeliverycost.dto.ParcelDeliveryCostDto;
 import xyz.mynt.parceldeliverycost.dto.ParcelDto;
 import xyz.mynt.parceldeliverycost.entity.DeliveryCostRule;
@@ -16,7 +15,6 @@ import xyz.mynt.parceldeliverycost.repository.DeliveryCostRuleRepository;
 import xyz.mynt.parceldeliverycost.service.integration.VoucherClientService;
 import xyz.mynt.parceldeliverycost.util.CriteriaUtil;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
