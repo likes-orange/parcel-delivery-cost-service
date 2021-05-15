@@ -176,9 +176,9 @@ public class V1ParcelDeliveryCostServiceTest {
             v1ParcelDeliveryCostService.calculateDeliveryCost(parcelDto);
         } catch (BadRequestException e) {
             assertEquals(String.format(ErrorMessages.REQUEST_NOT_ALLOWED,
-                    deliveryCostRuleList.get(0).getCriteriaValue(),
+                    deliveryCostRuleList.get(0).getType(),
                     deliveryCostRuleList.get(0).getCriteriaOperator(),
-                    parcelDto.getWeight()),
+                    deliveryCostRuleList.get(0).getCriteriaValue()),
                     e.getMessage());
         }
     }
